@@ -68,3 +68,7 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form"
 gem "sassc-rails"
+
+gem "lucide-rails", "~> 0.5.1"
+
+gem 'httparty'

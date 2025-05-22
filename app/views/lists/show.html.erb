@@ -1,0 +1,39 @@
+<%# show list of movies in this list with a button to edit this list %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h1 class="fw-light bg-light py-2"><%= @list.name %></h1>
+      <p class="lead text-muted">Here are some of the best movies you can watch.</p>
+      <div class="row">
+        <% if @movies.present? && @movies.any? %>
+          <% @movies.each do |movie| %>
+
+              <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <%= link_to image_tag(movie.poster_url, class: 'card-img-top'), movie_path(movie) %>
+                  <%= movie.title%>
+                </div>
+              </div>
+
+          <% end %>
+        <% else %>
+          <div class="col-12">
+            <p class="text-muted">There isn't any movie in this list.</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h1 class="fw-light bg-light py-2">Edit this list</h1>
+      <%= link_to 'Edit this list', edit_list_path(@list), class: 'btn btn-primary' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h1 class="fw-light bg-light py-2">Delete this list</h1>
+      <%= link_to 'Delete this list', list_path(@list), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<%# Form to insert a list with a name %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <h1 class="fw-light bg-light py-2">Create a new list</h1>
+      <%= form_with(model: @list, local: true) do |form| %>
+        <div class="mb-3">
+          <%= form.label :name, 'List Name' %>
+          <%= form.text_field :name, class: 'form-control' %>
+        </div>
+        <div class="mb-3">
+          <%= form.submit 'Create List', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
