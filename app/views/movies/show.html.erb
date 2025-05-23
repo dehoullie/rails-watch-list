@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <div class="row">
+        <!-- Product Images -->
+        <div class="col-md-6 mb-4">
+          <%= image_tag @movie.poster_url, class: 'img-fluid' %>
+        </div>
+
+        <!-- Product Details -->
+        <div class="col-md-6">
+          <div class="sticky-top" style="top: 20px;">
+            <h2 class="mb-3"><%= @movie.title%></h2>
+            <p class="text-muted mb-4">
+              <% @movie.lists.each do |list| %>
+                <span class="badge bg-dark"><%= list.name %></span>
+              <%end%>
+              </p>
+            <p class="mb-4"><%= @movie.overview %></p>
+            <div class="mb-4">
+                <h5>Rating:</h5>
+                <div class="btn-group" role="group" aria-label="Color selection">
+                  <h3><span class="badge bg-success"><%= @movie.rating %></span></h3>
+                </div>
+            </div>
+            <h2>Similar movies</h2>
+            <%= render partial: "shared/gallery", locals: { items: @similar_movies } %>
+          </div>
+        </div>
+    </div>
+</div>

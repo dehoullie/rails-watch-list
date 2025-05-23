@@ -8,27 +8,34 @@
     </div>
   </section>
 
-<div class="text-center">
+
   <div class="container">
     <div class="row">
-      <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light bg-light py-2">Movie Lists</h1>
         <%# Button to create a new list %>
         <%= link_to 'Create a new list', new_list_path, class: 'btn btn-primary' %>
         <p class="lead text-muted">Here are some of the best movies you can watch.</p>
-        <div class="row">
-          <% @lists.each do |list| %>
-            <%# Display each list in a card with list link%>
-            <%= link_to list_path(list) do %>
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <%= list.name%>
+      </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% @lists.each do |list| %>
+          <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+        <%= link_to list_path(list) do %>
+            <div class="card h-100">
+              <% last_movie = list.bookmarks.last&.movie %>
+              <% if last_movie && last_movie.poster_url.present? %>
+                <img src="<%= last_movie.poster_url %>" class="card-img-top" alt="<%= last_movie.title %>">
+              <% else %>
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Image">
+              <% end %>
+                <div class="card-body">
+                <h5 class="card-title"><%= list.name%></h5>
+                <p class="card-text">This is a responsive card.</p>
               </div>
             </div>
-            <%end%>
-          <%end%>
-        </div>
-      </div>
+        <%end%>
+          </div>
+      <%end%>
     </div>
   </div>
-</div>

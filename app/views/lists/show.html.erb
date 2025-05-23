@@ -8,11 +8,14 @@
         <% if @movies.present? && @movies.any? %>
           <% @movies.each do |movie| %>
 
-              <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
+              <div class="col-md-4 my-3">
+                <div class="card mb-4 shadow-sm h-100 d-flex flex-column">
                   <%= link_to image_tag(movie.poster_url, class: 'card-img-top'), movie_path(movie) %>
-                  <%= movie.title%>
+
+                  <div class="card-body">
+                  <h5 class="card-title"><%= movie.title%></h5>
                 </div>
+              </div>
               </div>
 
           <% end %>
